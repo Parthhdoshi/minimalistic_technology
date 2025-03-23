@@ -114,7 +114,7 @@ const Home = () => {
           </div>
 
           {/* Professional Plan */}
-          <div className="bg-green-500 p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg relative">
+          <div className="bg-green-500 p-6 rounded-2xl w-full sm:w-3/4 md:w-1/5 shadow-lg relative">
           <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 bg-green-600 text-black px-3 py-1 text-sm rounded-lg">
           Most Popular
             </div>
@@ -149,6 +149,46 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="bg-[#0A0A0A] text-white py-12">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
+        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
+          <div className="bg-white text-gray-900 rounded-lg p-6 shadow-lg flex-1">
+            <p className="text-lg mb-4">
+              This web app has completely transformed how we manage our deliveries. It’s seamless, efficient, and a game-changer for logistics!
+            </p>
+            <div className="flex items-center space-x-4">
+              <img
+                src="men.jpg"
+                alt="Daniel Martins"
+                className="w-12 h-12 rounded-full"
+              />
+              <div>
+                <h4 className="font-semibold">Daniel Martins</h4>
+                <p className="text-sm text-gray-500">Operations Manager, Swift Logistics Ltd.</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white text-gray-900 rounded-lg p-6 shadow-lg flex-1">
+            <p className="text-lg mb-4">
+              Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!
+            </p>
+            <div className="flex items-center space-x-4">
+              <img
+                src="women.jpg"
+                alt="Elene Rodriguez"
+                className="w-12 h-12 rounded-full"
+              />
+              <div>
+                <h4 className="font-semibold">Elene Rodriguez</h4>
+                <p className="text-sm text-gray-500">Founder, Express Freight</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     </div>
   );
  }
