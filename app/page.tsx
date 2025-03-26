@@ -1,10 +1,53 @@
 "use client";
 import Image from "next/image";
-import { Cpu, Layout, Rocket, Headset,Menu,X} from "lucide-react";
-import { useState } from "react";
+import { Cpu, Layout, Rocket, Headset,Menu,X,ArrowLeft,ArrowRight} from "lucide-react";
+import { useState, useEffect, useRef  } from "react";
+
+const testimonials = [
+  {
+    text: "This web app has completely transformed how we manage our deliveries. It’s seamless, efficient, and a game-changer for logistics!",
+    name: "Daniel Martins",
+    role: "Operations Manager, Swift Logistics Ltd.",
+    image: "men.jpg"
+  },
+  {
+    text: "Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!",
+    name: "Elene Rodriguez",
+    role: "Founder, Express Freight",
+    image: "women.jpg"
+  },
+  {
+    text: "Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!",
+    name: "Durgesh Nai",
+    role: "Founder, Express Freight",
+    image: "men1.jpg"
+  }
+];
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(1024);
+  const [slideWidth, setSlideWidth] = useState(33.33);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    setSlideWidth(windowWidth < 600 ? 100 : windowWidth < 1024 ? 50 : 33.33);
+  }, [windowWidth]);
+
+  const nextTestimonial = () => {
+    setCurrent((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <div className="min-h-screen font-geist-sans bg-[#0A0A0A] text-white">
@@ -14,7 +57,7 @@ const Home = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Image src="/logo.jpg" alt="Logo" className= "backdrop-blur-2xl" width={40} height={40} />
-          <div className="flex flex-col text-green-400 text-xl font-bold">
+          <div className="flex flex-colbg-[#7ED957] text-xl font-bold">
             <span>Minimilistic</span>
             <span>Technology</span>
           </div>
@@ -44,10 +87,10 @@ const Home = () => {
 
       {/* Buttons (Login & Get Started) */}
       <div className="hidden md:flex space-x-2">
-        <button className="px-4 py-2 border border-green-400 text-green-400 rounded-lg hover:bg-green-400 hover:text-white transition">
+        <button className="px-4 py-2 border bg-[#7ED957] text-black rounded-lg hover:bg-green-400 hover:text-white transition">
           Log In
         </button>
-        <button className="px-4 py-2 bg-green-400 text-gray-900 rounded-lg hover:bg-green-500 transition">
+        <button className="px-4 py-2 bg-[#7ED957] text-gray-900 rounded-lg hover:bg-green-500 transition">
           Get Started
         </button>
       </div>
@@ -61,7 +104,7 @@ const Home = () => {
           <div className="text-xs sm:text-sm text-gray-400 mt-4">
             <span>No coding needed</span> | <span>AI powered design</span> | <span>Fast deployment</span>
           </div>
-          <button className="bg-green-500 hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg mt-6">
+          <button className="bg-[#7ED957] hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg mt-6">
             Start Building
           </button>
         </div>
@@ -82,13 +125,13 @@ const Home = () => {
             { Icon:Headset,  title: "24/7 Support", desc: "Were here whenever you need help" },
            ].map((offer, index) => (
             <div key={index} className="flex flex-col items-center">
-              <offer.Icon size={40} className="text-green-400" />  
+              <offer.Icon size={40} className="bg-[#7ED957]" />  
               <h3 className="text-lg font-semibold mt-2">{offer.title}</h3>
               <p className="text-gray-400 text-sm">{offer.desc}</p>
             </div>
           ))}
         </div>
-        <button className="mt-6 bg-green-500 hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg">
+        <button className="mt-6 bg-[#7ED957] hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg">
           Try it Now
         </button>
       </section>
@@ -98,10 +141,10 @@ const Home = () => {
 
         <div className="mt-7 flex flex-col md:flex-row justify-center items-center gap-6">
           {/* Starter Plan */}
-          <div className="bg-green-400 p-6 rounded-2xl hover:xl: w-full sm:w-3/4 md:w-1/4 shadow-lg">
+          <div className="bg-[#7ED957] p-6 rounded-2xl hover:xl: w-full sm:w-3/4 md:w-1/4 shadow-lg">
             <h3 className="text-xl font-semibold">Starter</h3>
             <p className="text-2xl font-bold">$49 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-green-500 text-black hover:text-white px-2 py-2 rounded-lg w-full">
+            <button className="mt-4 bg-[#7ED957] text-black hover:text-white px-2 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
@@ -133,10 +176,10 @@ const Home = () => {
           </div>
 
           {/* Enterprise Plan */}
-          <div className="bg-green-400 p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg">
+          <div className="bg-[#7ED957] p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg">
             <h3 className="text-xl font-semibold">Enterprise</h3>
             <p className="text-2xl font-bold">$199 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-green-500 text-black hover:text-amber-50 px-4 py-2 rounded-lg w-full">
+            <button className="mt-4 bg-[#7ED957] text-black hover:text-amber-50 px-4 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
@@ -149,47 +192,103 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <>
+      {/* Testimonial Cards */}
       <section className="bg-[#0A0A0A] text-white py-12">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
-        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
-          <div className="bg-white text-gray-900 rounded-lg p-6 shadow-lg flex-1">
-            <p className="text-lg mb-4">
-              This web app has completely transformed how we manage our deliveries. It’s seamless, efficient, and a game-changer for logistics!
-            </p>
-            <div className="flex items-center space-x-4">
-              <img
-                src="men.jpg"
-                alt="Daniel Martins"
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <h4 className="font-semibold">Daniel Martins</h4>
-                <p className="text-sm text-gray-500">Operations Manager, Swift Logistics Ltd.</p>
-              </div>
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
+          <div className="relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-99.99%"
+              style={{
+                transform: `translateX(-${current * slideWidth}%)`,
+                width: `${testimonials.length * slideWidth}%`
+              }}
+            >
+              {testimonials.map((t, index) => (
+                <div
+                  key={index}
+                  className="w-full sm:w-[75%] lg:w-3/7 bg-white text-gray-900 rounded-lg p-6 shadow-lg mx-2 shrink-0 h-auto min-h-[180px]"
+                >
+                  <p className="text-lg mb-4">{t.text}</p>
+                  <div className="flex items-center space-x-4">
+                    <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full" />
+                    <div>
+                      <h4 className="font-semibold">{t.name}</h4>
+                      <p className="text-sm text-gray-500">{t.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="bg-white text-gray-900 rounded-lg p-6 shadow-lg flex-1">
-            <p className="text-lg mb-4">
-              Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!
-            </p>
-            <div className="flex items-center space-x-4">
-              <img
-                src="women.jpg"
-                alt="Elene Rodriguez"
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <h4 className="font-semibold">Elene Rodriguez</h4>
-                <p className="text-sm text-gray-500">Founder, Express Freight</p>
+          <div className="flex justify-end space-x-4 mt-6">
+            <button onClick={prevTestimonial} className="text-gray-400 hover:text-white p-3">
+              <ArrowLeft className="size-7" />
+            </button>
+            <button onClick={nextTestimonial} className="text-gray-400 hover:text-white p-3">
+              <ArrowRight className="size-7" />
+            </button>
+          </div>
+        </div>
+      </section>
+      {/* Form */}
+      <section className="bg-[#0A0A0A] text-white py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">Get Started Today</h2>
+          <p className="text-center mb-8">Kindly fill this form to get started</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Left Column */}
+            <div className="space-y-4 col-span-1 flex items-center justify-center">
+              <div className="text-[#A8A8A8] text-center">
+                <p>Join 1000+ businesses using Minimalistic Technology to build their dream website.</p>
+                <p className="mt-2">📧 MinimalisticTechnology.com</p>
+                <p>📞 +44-000-000-0000</p>
               </div>
+            </div>
+            {/* Right Column */}
+            <div className="space-y-8 col-span-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Business Information */}
+                <div>
+                  <h3 className="text-2xl font-bold p-3">Business Information</h3>
+                  <div className="grid grid-cols-1 gap-4">
+                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Full Name*" />
+                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Email Address*" />
+                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Phone Number*" />
+                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Business Name*" />
+                    <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Brief Description of Business" rows= {3}></textarea>
+                  </div>
+                </div>
+                {/* Project Information */}
+                <div>
+                  <h3 className="text-2xl font-bold p-3">Project Information</h3>
+                  <div className="grid grid-cols-1 gap-4">
+                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Type of Website*" />
+                    <select
+                      className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md">
+                      defaultValue=""
+                      <option className="bg-black text-white" value="" disabled>Select Service*</option>
+                      <option className="bg-black text-white" value="web-design">Web Design</option>
+                      <option className="bg-black text-white" value="erp">ERP</option>
+                      <option className="bg-black text-white" value="ecommerce">E-commerce site</option>
+                    </select>
+                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Do you have existing website?" />
+                    <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="If yes, please describe" rows= {1}></textarea>
+                    <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Brief Description of Project" rows={3}></textarea>
+                  </div>
+                </div>
+              </div>
+                            {/* Submit Button */}
+                            <div className="flex justify-center mt-8">
+                <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    </div>
-  );
- }
+      </section>
+            </>
+          </div>
+        );
+      }
 export default Home;
