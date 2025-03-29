@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import { Cpu, Layout, Rocket, Headset,Menu,X,ArrowLeft,ArrowRight} from "lucide-react";
-import { useState, useEffect, useRef  } from "react";
+import { Cpu, Layout, Rocket, Headset,Menu,X,ArrowLeft,ArrowRight,} from "lucide-react";
+import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import { useState, useEffect, } from "react";
 
 const testimonials = [
   {
@@ -50,14 +51,14 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen font-geist-sans bg-[#0A0A0A] text-white">
+    <div className="min-h-screen font-geist-sans bg-[#222222] text-white">
 
-      <header className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md text-white p-4 md:flex md:justify-between md:items-center">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#222222]/50 backdrop-blur-md text-white p-4 md:flex md:justify-between md:items-center">
       {/* Logo Section */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Image src="/logo.jpg" alt="Logo" className= "backdrop-blur-2xl" width={40} height={40} />
-          <div className="flex flex-colbg-[#7ED957] text-xl font-bold">
+          <div className="flex flex-colbg-[#7ED957] text-green-600 text-xl font-bold">
             <span>Minimilistic</span>
             <span>Technology</span>
           </div>
@@ -74,7 +75,7 @@ const Home = () => {
 
       {/* Navigation Menu */}
       <nav
-        className={`absolute top-full left-0 w-full bg-black/50 p-4 space-y-4 md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 ${
+        className={`absolute top-full left-0 w-full bg-[#222222]/50 p-4 space-y-4 md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 ${
           isOpen ? "block" : "hidden"
         }`}
       >
@@ -87,7 +88,7 @@ const Home = () => {
 
       {/* Buttons (Login & Get Started) */}
       <div className="hidden md:flex space-x-2">
-        <button className="px-4 py-2 border bg-[#7ED957] text-black rounded-lg hover:bg-green-400 hover:text-white transition">
+        <button className="px-4 py-2 border bg-[#222222] text-green-500 rounded-lg hover:bg-green-400 hover:text-white transition">
           Log In
         </button>
         <button className="px-4 py-2 bg-[#7ED957] text-gray-900 rounded-lg hover:bg-green-500 transition">
@@ -99,7 +100,7 @@ const Home = () => {
       {/* Hero Section */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full mt-40 sm:mt-60 px-6 sm:px-16">
         <div className="max-w-xl text-left">
-          <h1 className="text-3xl sm:text-4xl font-bold">Build Websites Effortlessly</h1>
+          <h1 className="text-5xl sm:text-4xl font-bold">Build Websites Effortlessly</h1>
           <p className="text-base sm:text-lg">From Idea to Live Website - We Make It Seamless</p>
           <div className="text-xs sm:text-sm text-gray-400 mt-4">
             <span>No coding needed</span> | <span>AI powered design</span> | <span>Fast deployment</span>
@@ -115,8 +116,8 @@ const Home = () => {
       </div>
 
       {/* What We Offer Section */}
-      <section className="text-white text-center mt-12 p-8">
-        <h2 className="text-3xl font-bold mb-6">What We Offer</h2>
+      <section className="text-white text-center mt-40 p-8">
+        <h2 className="text-4xl font-bold mb-6">What We Offer</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             { Icon:Cpu, title: "AI Powered Website Builder", desc: "Generate layout tailored to your needs" },
@@ -125,26 +126,26 @@ const Home = () => {
             { Icon:Headset,  title: "24/7 Support", desc: "Were here whenever you need help" },
            ].map((offer, index) => (
             <div key={index} className="flex flex-col items-center">
-              <offer.Icon size={40} className="bg-[#7ED957]" />  
+              <offer.Icon size={40} className="bg-white text-black" />  
               <h3 className="text-lg font-semibold mt-2">{offer.title}</h3>
               <p className="text-gray-400 text-sm">{offer.desc}</p>
             </div>
           ))}
         </div>
-        <button className="mt-6 bg-[#7ED957] hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg">
+        <button className="mt-6 bg-green-600 hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg">
           Try it Now
         </button>
       </section>
   
-      <section className="mt-7 text-white text-center px-4">
-        <h2 className="text-2xl md:text-3xl font-bold">Pricing Plan</h2>
+      <section className="mt-17 text-bklack  text-center px-4">
+        <h2 className="text-3xl md:text-3xl font-bold">Pricing Plan</h2>
 
         <div className="mt-7 flex flex-col md:flex-row justify-center items-center gap-6">
           {/* Starter Plan */}
-          <div className="bg-[#7ED957] p-6 rounded-2xl hover:xl: w-full sm:w-3/4 md:w-1/4 shadow-lg">
-            <h3 className="text-xl font-semibold">Starter</h3>
-            <p className="text-2xl font-bold">$49 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-[#7ED957] text-black hover:text-white px-2 py-2 rounded-lg w-full">
+          <div className="bg-[#7ED957] text-black p-6 rounded-2xl hover:xl: w-full sm:w-3/4 md:w-1/4 shadow-lg">
+            <h3 className="text-xl font-semibold ">Starter</h3>
+            <p className="text-2xl font-bold ">$49 <span className="text-sm">/month</span></p>
+            <button className="mt-4 bg-green-600 text-black hover:text-white px-2 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
@@ -157,13 +158,13 @@ const Home = () => {
           </div>
 
           {/* Professional Plan */}
-          <div className="bg-green-500 p-6 rounded-2xl w-full sm:w-3/4 md:w-1/5 shadow-lg relative">
-          <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 bg-green-600 text-black px-3 py-1 text-sm rounded-lg">
+          <div className="bg-green-500 text-black p-6 rounded-2xl w-full sm:w-3/4 md:w-1/5 shadow-lg relative">
+          <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 bg-green-400 text-black px-3 py-1 text-sm rounded-lg">
           Most Popular
             </div>
             <h3 className="text-xl font-semibold">Professional</h3>
             <p className="text-2xl font-bold">$99 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-green-400 text-black hover:text-white px-4 py-2 rounded-lg w-full">
+            <button className="mt-4 bg-white text-black hover:text-white px-4 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
@@ -176,10 +177,10 @@ const Home = () => {
           </div>
 
           {/* Enterprise Plan */}
-          <div className="bg-[#7ED957] p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg">
+          <div className="bg-[#7ED957] text-black p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg">
             <h3 className="text-xl font-semibold">Enterprise</h3>
             <p className="text-2xl font-bold">$199 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-[#7ED957] text-black hover:text-amber-50 px-4 py-2 rounded-lg w-full">
+            <button className="mt-4 bg-green-500 text-black hover:text-amber-50 px-4 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
@@ -195,7 +196,7 @@ const Home = () => {
 
       <>
       {/* Testimonial Cards */}
-      <section className="bg-[#0A0A0A] text-white py-12">
+      <section className="bg-[#222222] text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
           <div className="relative overflow-hidden">
@@ -234,10 +235,10 @@ const Home = () => {
         </div>
       </section>
       {/* Form */}
-      <section className="bg-[#0A0A0A] text-white py-12">
+      <section className="bg-[#222222] text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Get Started Today</h2>
-          <p className="text-center mb-8">Kindly fill this form to get started</p>
+          <h2 className="text-3xl font-bold text-center mb-2">Get Started Today</h2>
+          <p className="text-center mb-10">Kindly fill this form to get started</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Left Column */}
             <div className="space-y-4 col-span-1 flex items-center justify-center">
@@ -288,6 +289,62 @@ const Home = () => {
         </div>
       </section>
             </>
+    <footer className="bg-[#222222] text-gray-300 py-8">
+    <div className="border-b-2 w-full border-gray-500 my-4"></div>
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+          {/* Left Column */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-3">Minimalistic Learning</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-white transition">About Us</a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition">Services</a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Right Column */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-white transition">Book a Service</a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition">Domain Name</a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition">Support</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        {/* Bottom Section */}
+
+        <div className="border-b-2 w-full border-gray-700 my-"></div>
+        <div className="text-white flex space-x-4 text-start mt-4 md:mt-0">@ 2025 Minimilistic Technology All Rights Resserved</div>
+        <div className="flex space-x-4 justify-end mt-4 md:mt-0">
+            <a href="#" className="hover:text-white transition">
+              <FaFacebook size={24} className="text-white hover:text-white" />
+            </a>
+            <a href="#" className="hover:text-white transition">
+              <FaTwitter size={24} className="text-white hover:text-white" />
+            </a>
+            <a href="#" className="hover:text-white transition">
+              <FaYoutube size={24} className="text-white hover:text-white" />
+            </a>
+          </div>
+        </div>
+    </footer>
           </div>
         );
       }
