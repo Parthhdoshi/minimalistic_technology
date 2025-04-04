@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { BackgroundGradient } from "../components/BackgroundGradient";
 import { Cpu, Layout, Rocket, Headset,Menu,X,ArrowLeft,ArrowRight,} from "lucide-react";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
-import { useState, useEffect, } from "react";
+import { useState, useEffect } from "react";
 
 const testimonials = [
   {
@@ -59,7 +60,7 @@ const Home = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Image src="/logo.jpg" alt="Logo" className= "backdrop-blur-2xl bg-[#222222]"  width={40} height={40} />
-          <div className="flex flex-colbg-[#7ED957] text-green-600 text-xl font-bold">
+          <div className="flex flex-colbg- text-green-600 text-xl font-bold">
             <span>Minimilistic</span>
             <span>Technology</span>
           </div>
@@ -82,7 +83,9 @@ const Home = () => {
       >
         <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
           <li className="hover:text-green-400 cursor-pointer">Home</li>
-          <li className="hover:text-green-400 cursor-pointer">About Us</li>
+          <li className="hover:text-green-600 cursor-pointer">
+            <Link href="/AboutUs">About Us</Link>
+          </li>
           <li className="hover:text-green-400 cursor-pointer">Services</li>
         </ul>
       </nav>
@@ -196,7 +199,7 @@ const Home = () => {
       </section>
 
       <>
-      {/* Testimonial Cards
+      {/* Testimonial Cards*/}
       <section className="bg-[#222222] text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
@@ -234,12 +237,12 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </section> */}
-                <div className=" mt-7">
+      </section> 
+                {/* <div className=" mt-7">
             <BackgroundGradient>
 
             </BackgroundGradient>
-          </div>
+          </div> */}
       {/* Form */}
       <section className="bg-[#222222] text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
@@ -276,10 +279,10 @@ const Home = () => {
                     <select
                       className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md">
                       defaultValue=""
-                      <option className="bg-black text-white" value="" disabled>Select Service*</option>
-                      <option className="bg-black text-white" value="web-design">Web Design</option>
-                      <option className="bg-black text-white" value="erp">ERP</option>
-                      <option className="bg-black text-white" value="ecommerce">E-commerce site</option>
+                      <option className="bg-[#222222] text-white" value="" disabled>Select Service*</option>
+                      <option className="bg-[#222222] text-white" value="web-design">Web Design</option>
+                      <option className="bg-[#222222] text-white" value="erp">ERP</option>
+                      <option className="bg-[#222222] text-white" value="ecommerce">E-commerce site</option>
                     </select>
                     <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Do you have existing website?" />
                     <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="If yes, please describe" rows= {1}></textarea>
@@ -295,12 +298,12 @@ const Home = () => {
         </div>
       </section>
             </>
-    <footer className="bg-[#222222] text-gray-300 py-8">
-    <div className="border-b-2 w-full border-gray-500 my-4"></div>
+            <footer className="bg-[#222222] text-gray-300">
+    <div className="border-b-2 w-full border-gray-500"></div>
       <div className="max-w-6xl mx-auto px-6">
-        {/* Top Section */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-          {/* Left Column */}
+
           <div>
             <h3 className="text-white font-semibold text-lg mb-3">Minimalistic Learning</h3>
             <ul className="space-y-2">
@@ -316,7 +319,6 @@ const Home = () => {
             </ul>
           </div>
 
-          {/* Right Column */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
             <ul className="space-y-2">
@@ -333,12 +335,9 @@ const Home = () => {
           </div>
         </div>
 
-
-        {/* Bottom Section */}
-
-        <div className="border-b-2 w-full border-gray-700 my-4"></div>
-        <div className="text-white flex space-x-4 text-start mt-4  md:mt-0">@ 2025 Minimilistic Technology All Rights Resserved</div>
-        <div className="flex space-x-4 justify-end mt-4 md:mt-0">
+        <div className="absolute left-0 right-0 border-b-2 border-gray-700 "></div>
+        <div className="text-white flex space-x-4 text-start h-3 md:mt-0">@ 2025 Minimilistic Technology All Rights Resserved</div>
+        <div className="flex space-x-4 justify-end mt-4 mb-5 md:mt-0">
             <a href="#" className="hover:text-white transition">
               <FaFacebook size={24} className="text-white hover:text-white" />
             </a>
