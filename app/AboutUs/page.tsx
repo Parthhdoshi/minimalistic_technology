@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import {useState} from "react";
 import {X , Menu,} from "lucide-react";
 import {FaFacebook, FaTwitter,FaYoutube} from "react-icons/fa"
@@ -37,9 +38,9 @@ const AboutUs = () => {
                 }`}
             >    
              <ul className = "flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 ">
-                <li className ="hover:text-green-600 cursor-pointer">Home</li>
+                <li className ="hover:text-green-600 cursor-pointer"><Link href="/">Home</Link></li>
                 <li className ="hover:text-green-600 cursor-pointer">About Us</li>
-                <li className ="hover:text-green-600 cursor-pointer">Services</li>
+                <li className ="hover:text-green-600 cursor-pointer"><Link href="/Services">Services</Link></li>
              </ul>
             </nav>
             <div className="hidden md:flex space-x-2">
@@ -51,7 +52,6 @@ const AboutUs = () => {
             </button>
             </div>
           </header>
-
           <div>
           <section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-16 bg-[#222222] mt-7 text-white">
           <div className="text-center md:text-left md:w-1/2">

@@ -5,6 +5,7 @@ import { BackgroundGradient } from "../components/BackgroundGradient";
 import { Cpu, Layout, Rocket, Headset,Menu,X,ArrowLeft,ArrowRight,} from "lucide-react";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 
 const testimonials = [
   {
@@ -32,6 +33,7 @@ const Home = () => {
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1024);
   const [slideWidth, setSlideWidth] = useState(33.33);
+  const [fromData,setFromData]= useState ({Name:"",Email:"",Message:""})
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -77,16 +79,16 @@ const Home = () => {
 
       {/* Navigation Menu */}
       <nav
-        className={`absolute top-full left-0 w-full bg-[#222222]/50 p-4 space-y-4 md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 ${
+        className={`absolute top-full left-0 w-full bg-/50 p-4 space-y-4 md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 ${
           isOpen ? "block" : "hidden"
         }`}
       >
         <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-          <li className="hover:text-green-400 cursor-pointer">Home</li>
+          <li className="hover:text-green-400 cursor-pointer"><Link href="/">Home</Link></li>
           <li className="hover:text-green-600 cursor-pointer">
             <Link href="/AboutUs">About Us</Link>
           </li>
-          <li className="hover:text-green-400 cursor-pointer">Services</li>
+          <li className="hover:text-green-400 cursor-pointer"><Link href="/Services">Services</Link></li>
         </ul>
       </nav>
 
@@ -246,7 +248,7 @@ const Home = () => {
       {/* Form */}
       <section className="bg-[#222222] text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-2">Get Started Today</h2>
+          <h2  className="text-3xl font-bold text-center mb-2">Get Started Today</h2>
           <p className="text-center mb-10">Kindly fill this form to get started</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Left Column */}
