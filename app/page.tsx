@@ -5,7 +5,7 @@ import { BackgroundGradient } from "../components/BackgroundGradient";
 import { Cpu, Layout, Rocket, Headset,Menu,X,ArrowLeft,ArrowRight,} from "lucide-react";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import emailjs from "@emailjs/browser";
+import emailjs from "emailjs-com";
 
 const testimonials = [
   {
@@ -33,7 +33,7 @@ const Home = () => {
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1024);
   const [slideWidth, setSlideWidth] = useState(33.33);
-  const [fromData,setFromData]= useState ({Name:"",Email:"",Message:""})
+
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -53,6 +53,43 @@ const Home = () => {
   const prevTestimonial = () => {
     setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
+
+  const [formData, setFormData] = useState({
+    Name: "",
+    Email: "",
+    Message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const sendData = {
+      name: formData.Name,  
+      email: formData.Email,  
+      message: formData.Message, 
+    };
+
+    emailjs
+      .send("service_pw3837d", "template_2nfoejq", sendData, "UyZxk9SsnFm5_tP-I")
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response);
+          alert("Message sent successfully!");
+          setFormData({ Name: "", Email: "", Message: "" }); 
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          alert(`Failed to send message: ${error.text || "Unknown error"}`);
+        }
+      );
+  };
+
 
   return (
     <div className="min-h-screen font-geist-sans bg-[#222222] text-white">
@@ -263,7 +300,7 @@ const Home = () => {
             <div className="space-y-8 col-span-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Business Information */}
-                <div>
+                {/* <div>
                   <h3 className="text-2xl font-bold p-3">Business Information</h3>
                   <div className="grid grid-cols-1 gap-4">
                     <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Full Name*" />
@@ -272,11 +309,12 @@ const Home = () => {
                     <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Business Name*" />
                     <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Brief Description of Business" rows= {3}></textarea>
                   </div>
-                </div>
+                </div> */}
+
                 {/* Project Information */}
-                <div>
+                {/* <div>
                   <h3 className="text-2xl font-bold p-3">Project Information</h3>
-                  <div className="grid grid-cols-1 gap-4">
+                  // <div className="grid grid-cols-1 gap-4">
                     <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Type of Website*" />
                     <select
                       className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md">
@@ -290,11 +328,43 @@ const Home = () => {
                     <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="If yes, please describe" rows= {1}></textarea>
                     <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Brief Description of Project" rows={3}></textarea>
                   </div>
-                </div>
+                </div> */}
+
+<form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="Name"
+        placeholder="Full Name"
+        value={formData.Name}
+        onChange={handleChange}
+        required
+        className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
+      />
+      <input
+        type="email"
+        name="Email"
+        placeholder="Email Address"
+        value={formData.Email}
+        onChange={handleChange}
+        required
+        className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
+      />
+      <textarea
+        name="Message"
+        placeholder="Your Message"
+        value={formData.Message}
+        onChange={handleChange}
+        required
+         className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3 mb-3"
+      />
+      <button type="submit" className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button>
+    </form>
+
+
               </div>
                             {/* Submit Button */}
-                            <div className="flex justify-center mt-8">
-                <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button></div>
+                            {/* <div className="flex justify-center mt-8">
+                <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button></div> */}
             </div> 
           </div>
         </div>
