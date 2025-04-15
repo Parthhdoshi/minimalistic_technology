@@ -207,7 +207,7 @@ const Home = () => {
             </div>
             <h3 className="text-xl font-semibold">Professional</h3>
             <p className="text-2xl font-bold">$99 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-white text-black hover:text-white px-4 py-2 rounded-lg w-full">
+            <button className="mt-4 bg-white text-black hover:text-green-600 px-4 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
